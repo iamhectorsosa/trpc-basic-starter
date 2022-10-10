@@ -1,34 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# tRPC: Understanding Typesafety
 
-## Getting Started
+Typesafety is the extent to which a programming language prevents type errors. The process of verifying and enforcing the constraints of types may occur at compile time or at run-time. A programming language like [TypeScript](https://typefully.com/) checks a program for errors before execution (at compile time) as a static type checker. In contrast to a library like [Zod](https://zod.dev/), which additionally provides you with type checking at run-time. So how does a library like tRPC helps us better understand typesafety?
 
-First, run the development server:
+>tRPC allows you to easily build and consume fully typesafe APIs, without schemas or code generation.
 
-```bash
-npm run dev
-# or
-yarn dev
+At its core, [tRPC](https://trpc.io/) provides the solution to better statically type our API endpoints and share those types between our client and server, enabling type safety from end-to-end.
+
+## How does tRPC share types between client/server?
+
+Types are shared based on one or many _procedures_ contained in Routers. A **procedure** is a _composable_ query, mutation or subscription where you define how your client/server interact with each other. Let's say we need to define a query procedure for our [Next.js application](https://trpc.io/docs/v10/nextjs). 
+
+At the most basic level you can define an `input` (with its validation with your library of choice), and a `query` (the actual implementation of the procedure) which runs a function returning the data you need. At the end, the types of each router are exported to provide a fully-typed experience on the client without importing any server code.
+
+```typescript
+// @path: ./src/server/routers/user.ts
+import { t } from '../trpc';
+import { z } from 'zod';
+
+export const userRouter = t.router({
+  // Define a procedure (function) that
+  // ...takes an input and provides a query
+  // ...as `user.greet.useQuery()`
+  greet: t.procedure
+    // Input validation
+    .input( z.object({ name: z.string() }) )
+    .query(({ input }) => {
+      // Here you would process
+      // any information you'd need
+      // ..to return it to your client
+      return { text: `Hello, ${input.name}!` };
+    }),
+});
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Using your new tRPC-backend on the client
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+[@tRPC/react](https://trpc.io/docs/v10/react-queries) provides a set of hooks wrapped around [@tanstack/react-query](https://tanstack.com/query/v4/docs/guides/queries), so under the hood, they work just the same to fetch data from a server. You'll notice that the conventional _querying keys and functions_ are defined within your procedure.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```typescript
+// @path: ./src/pages/index.tsx
+import { trpc as t } from '../utils/trpc';
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+export default function Home() {
+  // Wrapped around @tanstack/react-query
+  // Can also destructure to access
+  // isLoading, isError, isSuccess, error and data
+  const result = t.user.greet.useQuery({ name: 'Client' });
+  
+  if (!result.data) {
+    return <div><h1>Loading...</h1></div>
+  }
 
-## Learn More
+  return <div><h1>{result.data?.text}</h1></div>
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+That's the basic setup. Both the result and input are type-inferred from the procedures as defined, and you'll get **TypeScript autocompletion and IntelliSense** that matches your backend API without requiring any code generation.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to explore this example using the GitHub repo: tRPC-Basic-Starter.
