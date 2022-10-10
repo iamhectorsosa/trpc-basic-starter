@@ -59,6 +59,6 @@ That's the basic setup. Both the result and input are type-inferred from the pro
 
 Feel free to explore this example using the GitHub repo: tRPC-Basic-Starter:
 
-[![Open in StackBlitz](https://stackblitz.com/github/ekqt/trpc-basic-starter?file=src/pages/index.tsx&file=src/server/routers/user.ts&view=editor)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ekqt/trpc-basic-starter?file=src/pages/index.tsx&file=src/server/routers/user.ts&view=editor)
 
 <a href="https://vercel.com/new/clone?repository-url=https://github.com/ekqt/trpc-basic-starter"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
