@@ -14,17 +14,9 @@ export default function Home() {
     <>
       <div>
         <h1>{result.data?.text}</h1>
-        <h2>Welcome to your tRPC starter!</h2>
-        <p>
-          If you get stuck, check <a href="https://trpc.io">the docs</a>, write a
-          message in tRPC&apos;s <a href="https://trpc.io/discord">Discord-channel</a>, or
-          write a message in{' '}
-          <a href="https://github.com/trpc/trpc/discussions">
-            GitHub Discussions
-          </a>.
-        </p>
+        <Contact />
+        <GHRepo href="https:github.com/ekqt/trpc-basic-starter" />
       </div>
-      <GHRepo href="https:github.com/ekqt/trpc-basic-starter" />
       <style jsx>{styles}</style>
     </>
   )
@@ -46,6 +38,22 @@ const styles = `
     margin-block: 0.8rem;
   }
 `
+
+const Contact = () => {
+  return (
+    <>
+      <h2>Welcome to your tRPC starter!</h2>
+      <p>
+        If you get stuck, check <a href="https://trpc.io">the docs</a>, write a
+        message in tRPC&apos;s <a href="https://trpc.io/discord">Discord-channel</a>, or
+        write a message in{' '}
+        <a href="https://github.com/trpc/trpc/discussions">
+          GitHub Discussions
+        </a>.
+      </p>
+    </>
+  )
+}
 
 const GHRepo = ({ accent = 'black', href }: { accent?: string; href: string }) => {
   return (
