@@ -1,5 +1,17 @@
 # tRPC: Understanding Typesafety
 
+## Usage/Setup
+
+```graphql
+npx create-next-app --example https://github.com/ekqt/trpc-basic-starter trpc-basic-starter
+cd trpc-basic-starter
+npm run dev
+```
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ekqt/trpc-basic-starter?file=src/pages/index.tsx&file=src/server/routers/user.ts&view=editor)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ekqt/trpc-basic-starter)
+
 Typesafety is the extent to which a programming language prevents type errors. The process of verifying and enforcing the constraints of types may occur at compile time or at run-time. A programming language like [TypeScript](https://typefully.com/) checks a program for errors before execution (at compile time) as a static type checker. In contrast, a library like [Zod](https://zod.dev/) can also provide you type checking at run-time. So how does a library like tRPC helps us better understand typesafety?
 
 > tRPC allows you to easily build and consume fully typesafe APIs, without schemas or code generation.
