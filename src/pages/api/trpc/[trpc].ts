@@ -1,4 +1,4 @@
-import { appRouter } from '../../../server/routers/_app'
+import { appRouter } from "../../../server/routers/_app";
 import * as trpcNext from "@trpc/server/adapters/next";
 
 // This exports only the type definition of the API
@@ -7,6 +7,6 @@ export type AppRouter = typeof appRouter;
 
 // Export API handler
 export default trpcNext.createNextApiHandler({
-  router: appRouter,
-  createContext: () => ({}),
+    router: appRouter,
+    createContext: () => ({}),
 });

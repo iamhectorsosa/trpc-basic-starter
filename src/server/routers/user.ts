@@ -1,5 +1,5 @@
-import { t } from '../trpc';
-import { z } from 'zod';
+import { t } from "../trpc";
+import { z } from "zod";
 
 export const userRouter = t.router({
     // Define a procedure (function) that
