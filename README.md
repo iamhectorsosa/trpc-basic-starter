@@ -2,7 +2,7 @@
 
 ## Usage/Setup
 
-```graphql
+```
 npx create-next-app --example https://github.com/ekqt/trpc-basic-starter trpc-basic-starter
 cd trpc-basic-starter
 npm run dev
