@@ -126,7 +126,7 @@ export const postRouter = t.router({
 });
 ```
 
-## How could we use procedures?
+## How can we use procedures?
 
 [Procedures](https://trpc.io/docs/v10/quickstart#add-a-query-procedure) are able to resolve any custom function to process a validated `{ input }`. Just to name a few examples: you could make use of an ORM like [Prisma](https://www.prisma.io/), a Baas like [Supabase](https://supabase.com), or a headless CMS like [Sanity](https://www.sanity.io/) to process your data with the benefits of fully typesafe APIs.
 
