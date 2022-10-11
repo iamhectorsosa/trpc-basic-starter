@@ -1,16 +1,16 @@
 # tRPC: Understanding Typesafety
 
-Typesafety is the extent to which a programming language prevents type errors. The process of verifying and enforcing the constraints of types may occur at compile time or at run-time. A programming language like [TypeScript](https://typefully.com/) checks a program for errors before execution (at compile time) as a static type checker. In contrast, a library like [Zod](https://zod.dev/) also provides you with type checking at run-time. So how does a library like tRPC helps us better understand typesafety?
+Typesafety is the extent to which a programming language prevents type errors. The process of verifying and enforcing the constraints of types may occur at compile time or at run-time. A programming language like [TypeScript](https://typefully.com/) checks a program for errors before execution (at compile time) as a static type checker. In contrast, a library like [Zod](https://zod.dev/) can also provide you type checking at run-time. So how does a library like tRPC helps us better understand typesafety?
 
 > tRPC allows you to easily build and consume fully typesafe APIs, without schemas or code generation.
 
-At its core, [tRPC](https://trpc.io/) provides the solution to better statically type our API endpoints and share those types between our client and server, enabling type safety from end-to-end.
+At its core, [tRPC](https://trpc.io/) provides the solution to statically type our API endpoints and share those types between our client and server, enabling type safety from end-to-end.
 
 ## How does tRPC share types between client/server?
 
 Types are shared based on one or many _procedures_ contained in Routers. A **procedure** is a _composable_ query, mutation or subscription where you define how your client/server interact with each other.
 
-Let's see what you'd need to create a query procedure for a [Next.js application](https://trpc.io/docs/v10/nextjs). We'll explore these concepts by reviewing our [tRPC-basic-starter](https://github.com/ekqt/trpc-basic-starter) GH repo. Here's how our file structure would initially look like:
+Let's see what you'd need to create a query procedure for a [Next.js application](https://trpc.io/docs/v10/nextjs). We'll explore these concepts by reviewing our [tRPC-basic-starter](https://github.com/ekqt/trpc-basic-starter) GH repo. Here's how our file structure initially looks like:
 
 ```graphql
 # @path: ./src
@@ -30,7 +30,7 @@ Let's see what you'd need to create a query procedure for a [Next.js application
 │   └── trpc.ts       # <-- Typesafe tRPC hooks
 ```
 
-You could define all of your procedures within the **tRPC HTTP handler** and completely skip the server directory. However, this wouldn't be a scalable approach. It is very likely that your backend will require multiple endpoints, for which it is recommended to separate your procedures into different sub-routers and merge them as suggested in the file structure above.
+You could define all of your procedures within the **tRPC HTTP handler** and completely skip the server directory. However, this wouldn't be a scalable approach. It's very likely that your backend will require several endpoints, for which it is recommended to separate your procedures into different sub-routers and merge them as suggested in the file structure above.
 
 To create a query procedure, at the most basic level we need to define an `input` (optional and validated with your library of choice), and a `query` (the actual implementation of the procedure) which runs a function returning the data you need. At the end, the types of each router are exported to provide a fully-typed experience on the client without importing any server code.
 
@@ -219,7 +219,7 @@ export default function NewPost() {
 
 ## So WIFY by using tRPC?
 
-What's in it for you using tRPC? We barely scratched the surface, here are a list of features?
+What's in it for you using tRPC? We barely scratched the surface, here are a list of features:
 
 -   Full static typesafety with autocompletion on the client, inputs, outputs and errors.
 -   No code generation, run-time bloat, or build pipeline.
