@@ -4,7 +4,7 @@
 
 ```
 $ npx create-next-app --example https://github.com/ekqt/trpc-basic-starter trpc-basic-starter
-$ cd [example]
+$ cd trpc-basic-starter
 
 # <- Using `npm`
 $ npm i
