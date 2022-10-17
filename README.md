@@ -1,6 +1,4 @@
-# tRPC: Understanding Typesafety
-
-## Local Setup + Development
+# Local Setup + Development
 
 ```
 $ npx create-next-app --example https://github.com/ekqt/trpc-basic-starter trpc-basic-starter
@@ -15,6 +13,8 @@ $ yarn dev
 ```
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ekqt/trpc-basic-starter?file=src/pages/index.tsx&file=src/server/routers/user.ts&view=editor)
+
+# tRPC: Understanding Typesafety
 
 Typesafety is the extent to which a programming language prevents type errors. The process of verifying and enforcing the constraints of types may occur at compile time or at run-time. A programming language like [TypeScript](https://typefully.com/) checks a program for errors before execution (at compile time) as a static type checker. In contrast, a library like [Zod](https://zod.dev/) can also provide you type checking at run-time. So how does a library like tRPC helps us better understand typesafety?
 
@@ -246,3 +246,5 @@ What's in it for you using tRPC? We barely scratched the surface, here are a lis
 Feel free to explore this example using the resources below:
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/ekqt/trpc-basic-starter?file=src/pages/index.tsx&file=src/server/routers/user.ts&view=editor)
+
+Originally published: [tRPC: Understanding Typesafety](https://www.webscope.io/blog/trpc-understanding-typesafety)
